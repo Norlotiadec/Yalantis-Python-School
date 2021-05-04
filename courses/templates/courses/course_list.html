@@ -1,0 +1,34 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}Курсы{% endblock %}
+
+{% block navigation %}
+<form action="{% url 'search' %}" method="get">
+    <p><input type="search" name="q" placeholder="Введите название курса"></p>
+    <button type="submit">Найти</button>
+</form>
+{% endblock %}
+
+{% block sidebar %}
+<form action="{% url 'search' %}" method="get">
+    <h3>Даты курсов</h3>
+    {% for course in courses %}
+    <input type="checkbox" name="date" value="{{ course.date_start.isoformat }}">{{ course.date_start|date:"d.m.Y" }}<Br>
+    {% endfor %}
+    <button type="submit">Фильтровать</button>
+</form>
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'api_courses' %}"><h2>JSON представление</h2></a>
+<a href="{% url 'add_course' %}">Добавить курс</a>
+
+{% for course in courses %}
+<div>
+    <h2>{{ course.title }}</h2>
+    <p>Дата начала: {{ course.date_start|date:"d.m.Y" }}</p>
+    <p>Дата окончания: {{ course.date_end|date:"d.m.Y" }}</p>
+    <a href="{% url 'course_detail' course.pk %}">Подробней</a>
+</div>
+{% endfor %}
+{% endblock %}

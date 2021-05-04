@@ -1,0 +1,11 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<h1>Вы действительно хотите удалить курс?!</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="ДА">
+</form>
+{% endblock %}

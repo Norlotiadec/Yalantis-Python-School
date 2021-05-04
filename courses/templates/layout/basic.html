@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<div style="background: #F5DEB3;
+     width: 100%;
+     height: 55px;
+     text-align: center">
+	<h2>Курсы</h2>
+</div>
+<div style="background: #FE9798; width: 100%; margin-bottom: 2px; padding: 5px 5px">
+    {% block navigation %}{% endblock %}
+</div>
+<div style="background: #40E0D0;
+     float: left;
+     width: 19%;
+     padding-left: 1%">
+    {% block sidebar %}{% endblock %}
+</div>
+<div style="background: #DCDCDC;
+     float: right;
+     width: 79%;
+     padding-left: 1%">
+	{% block content %}{% endblock %}
+</div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'layout/basic.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<h1>{{ course.title }}</h1>
+<p>{{ course.content }}</p>
+<p>Дата начала: {{ course.date_start|date:"d.m.Y" }}</p>
+<p>Дата окончания: {{ course.date_end|date:"d.m.Y" }}</p>
+<p>Количество лекций: {{ course.amount_lecture }}</p>
+<a href="{% url 'delete_course' pk=course.pk %}">Удалить курс</a> <br>
+<a href="{% url 'update_course' pk=course.pk %}">Редактировать курс</a>
+<h3><a href="{% url 'home' %}">Вернуться на главную</a></h3>
+{% endblock %}
